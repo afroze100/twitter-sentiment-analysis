@@ -1,0 +1,4 @@
+cron:
+- description: CronTask1
+  url: /crontask1
+  schedule: every 1 hours

@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var results = {{plotdata|safe}}
+
+        var data = google.visualization.arrayToDataTable(results);
+
+        var options = {
+          vAxis: {maxValue:100, minValue:-100, title:'Popularity Score', gridlines: {count: 9}},
+          hAxis: {title: '<=== Time in Past'},
+          'backgroundColor':'#C0DEED',
+          titleTextStyle: {color:'#47525C'}
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_line'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+
+</html>

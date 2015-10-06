@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  
+  <haed>
+    <title>TweetMood. Analyze Twitter mood!</title>
+  </head>
+
+  <body>
+
+  <div id="container">
+
+    <div id="top background image" style="float:left;">
+      <img border="0" src="http://i131.photobucket.com/albums/p287/afroze100/backgroundnew.png" width="1000px"/>
+    </div>
+
+
+    <div id="feature-bar">
+      <ul id = "features">
+        <li><a href="/tweetscore"style="color: yellow"><b>TweetScore</b></a></li>
+        <li><a href="/tweetcomparison"style="color: yellow"><b>TweetCompare</b></a></li>
+        <li><a href="/tweetstats"style="color: yellow"><b>TweetStats</b></a></li> 
+        </ul>
+    </div>
+
+
+    <div id="side-bar" style="background-color:#C0DEED;height:480px;width:200px;float:left;">
+      <ul class = "navbar">
+        <li><a href="/"style="color: yellow"><b>Home</b></a></li>
+        <li><a href="/about"style="color: yellow"><b>About</b></a></li>
+        <li><a href="/additionals"style="color: yellow"><b>Additionals</b></a></li>
+        <li><a href="/contact"style="color: yellow"><b>Contact</b></a></li> 
+        </ul>
+    </div>
+
+
+    <div id="content" style="background-color:#C0DEED;height:448;width:768px;float:left;">
+
+
+        <form method = "post" action="/tweetstats_result" align="center">
+
+        <div class = "error" style = "color: red">{{error}}
+        </div>
+        <font color="#47525C"><h2>TweetStats</h2> 
+        <br> 
+        <b>Please select a query and time-period to perform the analysis:</b>
+        </font>
+        <br>
+        <br>
+
+        <select name="query_cron">
+          <option value="obama">obama</option>
+          <option value="romney">romney</option>
+          <option value="zardari">zardari</option>
+          <option value="imran khan">imran khan</option>
+          <option value="pakistan">pakistan</option>
+          <option value="star wars">star wars</option>
+          <option value="lord of the rings">lord of the rings</option>
+          <option value="appl">appl</option>
+          <option value="xbox">xbox</option>
+          <option value="ps3">ps3</option>
+        </select>
+
+        <select name="time_frame">
+          <option value=24>day</option>
+          <option value=168>week</option>
+          <option value=720>month</option>
+          <option value=8760>year</option>
+        </select>
+
+        <br>
+    
+        <input type="submit">
+
+      </form>
+
+        <hr color="#1E90FF">
+        <br>
+
+        <font color="#47525C" align="justify">
+          <p><b>TweetStats</b> tracks the popularity score of certain popular terms on twitter over time. This feature is for long-term sentiment analysis, like when following political campaigns or analyzing the effects of changes in public sentiments with respect ceratain events.</p>
+          <p><b>Note</b>: Currently only a handful terms of our choice have been selected for this feature, and users are generally not given the option to follow their custom queries. However if you have any particular interesting term for long-term analysis in mind, do share with us and we will consider inputting it into our system!</p>
+        </font>
+
+    </div>
+
+
+    <div id="footer" style="background-color:#1E90FF;clear:both;text-align:center;">
+      <font color="#EEEEEE">
+      Developed by Afroze Ibrahim Baqapuri (afroze.baqapuri@epfl.ch)
+      </font>
+    </div>
+
+  </div>
+ 
+  </body>
+
+
+
+<style type="text/css">
+
+#container {
+    width: 1000px;
+    height: 700px;
+    background-color:#C0DEED;
+    margin: 0px auto 0px auto;
+}
+
+#features{
+  display: block;
+  background:#1E90FF;
+  border:1px solid #aaa;
+  border-width:2px 2px;
+  margin:0px 0px;
+  padding:0px;
+  text-align:center;
+}
+
+#features li{
+  display:inline;
+}
+
+#features a:link,a:visited
+{
+  background-color:#1E90FF;
+  display:inline-block;
+  padding:5px 25px;
+}
+
+#features a:hover,a:active
+{
+  background-color:#1256FF;
+}
+
+ul.navbar {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 12em;
+  width: 9em 
+}
+
+ul.navbar li {
+  background: #1E90FF;
+  margin: 0.5em 0;
+  padding: 0.3em;
+  border-right: 1em solid black 
+}
+
+ul.navbar a {
+  text-decoration: none 
+}
+
+ul.navbar a:link,a:visited
+{
+  background-color:#1E90FF;
+  display:inline-block;
+  padding:auto;
+}
+
+ul.navbar a:hover,a:active
+{
+  background-color:#1256FF;
+}
+
+#content {
+  padding: 1em 2em 1em 0em;
+}
+
+</style>
+
+</html>
+

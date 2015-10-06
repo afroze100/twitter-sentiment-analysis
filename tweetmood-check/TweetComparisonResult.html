@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+	
+	<haed>
+		<title>TweetMood. Analyze Twitter mood!</title>
+	</head>
+
+	<body>
+
+	<div id="container">
+
+		<div id="top background image" style="float:left;">
+			<img border="0" src="http://i131.photobucket.com/albums/p287/afroze100/backgroundnew.png" width="1000px"/>
+		</div>
+
+
+		<div id="feature-bar">
+			<ul id = "features">
+    		<li><a href="/tweetscore"style="color: yellow"><b>TweetScore</b></a></li>
+    		<li><a href="/tweetcomparison"style="color: yellow"><b>TweetCompare</b></a></li>
+    		<li><a href="/tweetstats"style="color: yellow"><b>TweetStats</b></a></li> 
+    		</ul>
+		</div>
+
+
+		<div id="side-bar" style="background-color:#C0DEED;height:480px;width:170px;float:left;">
+			<ul class = "navbar">
+    		<li><a href="/"style="color: yellow"><b>Home</b></a></li>
+        <li><a href="/about"style="color: yellow"><b>About</b></a></li>
+        <li><a href="/additionals"style="color: yellow"><b>Additionals</b></a></li>
+        <li><a href="/contact"style="color: yellow"><b>Contact</b></a></li> 
+    		</ul>
+		</div>
+
+
+		<div id="content" style="background-color:#C0DEED;height:auto;width:830px;float:left;">
+
+        <form method = "post" action="/tweetcomparison_result" align="center">
+        <font color="#47525C">Perform another <b>TweetCompare</b> search:
+        <br>
+        <br>
+        <label>Query 1:<input type="text" name="query_2"></label>
+        <label>Query 2:<input type="text" name="query_3"></label>
+        <label>Query 3:<input type="text" name="query_4"></label>
+        <br>
+        <input type="submit">
+        </font>
+        </form>
+
+        <br>
+        <hr color="#1E90FF">
+        <br>
+
+        <font color="#47525C" align="center"><h2>By public opinion the most popular term is: <font color="green">{{max_query}}</h2></font></font>
+
+        <br>
+        <hr color="#1E90FF">
+        <br>
+               
+        {% if score_1_float >= 60 %}
+        <font color="#47525C"><h3>Popularity Score of <u>{{query_1}}</u>: <font color="green">{{score_1}}</h3></font></font>
+        {% elif score_1_float <= -60 %}
+        <font color="#47525C"><h3>Popularity Score of <u>{{query_1}}</u>: <font color="red">{{score_1}}</h3></font></font>
+        {% elif score_1_float >= 15 and score_1_float < 60 %}
+        <font color="#47525C"><h3>Popularity Score of <u>{{query_1}}</u>: <font color="#7ABA59">{{score_1}}</h3></font></font>
+        {% elif score_1_float <= -15 and score_1_float > -60 %}
+        <font color="#47525C"><h3>Popularity Score of <u>{{query_1}}</u>: <font color="#FF8080">{{score_1}}</h3></font></font>
+        {% else %}
+        <font color="#47525C"><h3>Popularity Score of <u>{{query_1}}</u>: <font color="#4169E1">{{score_1}}</h3></font></font>
+        {% endif %}
+
+        <div style="display:inline-block;" id="chart_pie_1"></div>
+        <div style="display:inline-block;" id="chart_bar_1"></div>
+
+        <br>
+        <hr color="#1E90FF">
+        <br>
+
+        {% if score_2_float >= 60 %}
+        <font color="#47525C"><h3>Popularity Score of <u>{{query_2}}</u>: <font color="green">{{score_2}}</h3></font></font>
+        {% elif score_2_float <= -60 %}
+        <font color="#47525C"><h3>Popularity Score of <u>{{query_2}}</u>: <font color="red">{{score_2}}</h3></font></font>
+        {% elif score_2_float >= 15 and score_1_float < 60 %}
+        <font color="#47525C"><h3>Popularity Score of <u>{{query_2}}</u>: <font color="#7ABA59">{{score_2}}</h3></font></font>
+        {% elif score_2_float <= -15 and score_1_float > -60 %}
+        <font color="#47525C"><h3>Popularity Score of <u>{{query_2}}</u>: <font color="#FF8080">{{score_2}}</h3></font></font>
+        {% else %}
+        <font color="#47525C"><h3>Popularity Score of <u>{{query_2}}</u>: <font color="#4169E1">{{score_2}}</h3></font></font>
+        {% endif %}
+
+        <div style="display:inline-block;" id="chart_pie_2"></div>
+        <div style="display:inline-block;" id="chart_bar_2"></div>
+
+        <br>
+
+        {% if query_3 != "" %}
+          <hr color="#1E90FF">
+          <br>
+
+          {% if score_3_float >= 60 %}
+          <font color="#47525C"><h3>Popularity Score of <u>{{query_3}}</u>: <font color="green">{{score_3}}</h3></font></font>
+          {% elif score_3_float <= -60 %}
+          <font color="#47525C"><h3>Popularity Score of <u>{{query_3}}</u>: <font color="red">{{score_3}}</h3></font></font>
+          {% elif score_3_float >= 15 and score_1_float < 60 %}
+          <font color="#47525C"><h3>Popularity Score of <u>{{query_3}}</u>: <font color="#7ABA59">{{score_3}}</h3></font></font>
+          {% elif score_3_float <= -15 and score_1_float > -60 %}
+          <font color="#47525C"><h3>Popularity Score of <u>{{query_3}}</u>: <font color="#FF8080">{{score_3}}</h3></font></font>
+          {% else %}
+          <font color="#47525C"><h3>Popularity Score of <u>{{query_3}}</u>: <font color="#4169E1">{{score_3}}</h3></font></font>
+          {% endif %}
+
+          <div style="display:inline-block;" id="chart_pie_3"></div>
+          <div style="display:inline-block;" id="chart_bar_3"></div>
+          
+          <br>
+        {% endif %}
+
+        <br>
+
+		</div>
+
+
+		<div id="footer" style="background-color:#1E90FF;clear:both;text-align:center;">
+			<font color="#EEEEEE">
+			Developed by Afroze Ibrahim Baqapuri (afroze.baqapuri@epfl.ch)
+			</font>
+		</div>
+
+	</div>
+ 
+	</body>
+
+
+
+<style type="text/css">
+
+#container {
+    width: 1000px;
+    height: auto;
+    background-color:#C0DEED;
+    margin: 0px auto 0px auto;
+}
+
+#features{
+  display: block;
+  background:#1E90FF;
+  border:1px solid #aaa;
+  border-width:2px 2px;
+  margin:0px 0px;
+  padding:0px;
+  text-align:center;
+}
+
+#features li{
+  display:inline;
+}
+
+#features a:link,a:visited
+{
+  background-color:#1E90FF;
+  display:inline-block;
+  padding:5px 25px;
+}
+
+#features a:hover,a:active
+{
+  background-color:#1256FF;
+}
+
+ul.navbar {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 12em;
+  width: 9em 
+}
+
+ul.navbar li {
+  background: #1E90FF;
+  margin: 0.5em 0;
+  padding: 0.3em;
+  border-right: 1em solid black 
+}
+
+ul.navbar a {
+  text-decoration: none 
+}
+
+ul.navbar a:link,a:visited
+{
+  background-color:#1E90FF;
+  display:inline-block;
+  padding:auto;
+}
+
+ul.navbar a:hover,a:active
+{
+  background-color:#1256FF;
+}
+
+#content {
+	padding: 1em 0em 1em 0em;
+}
+
+#tweets {
+  padding: 0em 2em 0em 1em;
+}
+
+</style>
+
+</html>
+

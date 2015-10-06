@@ -1,0 +1,13 @@
+application: tweet-mood-check
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /.*
+  script: tweet-mood-check.app
+
+libraries:
+- name: jinja2
+  version: latest

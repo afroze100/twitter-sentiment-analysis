@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      google.load('visualization', '1.0', {'packages':['corechart']});
+      google.setOnLoadCallback(drawCharts_1);
+
+
+      function drawPie_1() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Sentiment');
+        data.addColumn('number', 'Tweets');
+        data.addRows([
+          ['Positive', {{pos}}],
+          ['Negative', {{neg}}],
+          // ['Neutral', 9]
+        ]);
+
+        var options = {'title':'Sentiment Analysis by Percentage',
+                       'colors':['#2D912D','#FF1919','#62B1FF'],
+                       titleTextStyle: {color:'#47525C'},
+                       'backgroundColor':'#C0DEED',
+                       'width':400,
+                       'height':200};
+
+        var chart1 = new google.visualization.PieChart(document.getElementById('chart_pie_1'));
+        chart1.draw(data, options);
+      }
+
+
+      function drawBar_1() {
+        var data = google.visualization.arrayToDataTable([
+          ['Sentiment', 'Positive', 'Negative', 'Neutral'],
+          ['Sentiments', {{pos}}, {{neg}}, {{neu}}]
+        ]);
+
+        var options = {
+          title:'Sentiment Analysis by Count',
+          hAxis: {minValue: 0}, 
+          titleTextStyle: {color:'#47525C'},
+          'backgroundColor':'#C0DEED',
+          'colors':['#2D912D','#FF1919','#4169E1'],
+          'width':400, 'height':200
+        };
+
+        var chart2 = new google.visualization.BarChart(document.getElementById('chart_bar_1'));
+        chart2.draw(data, options);
+      }
+
+
+      function drawCharts_1() {
+        drawPie_1();
+        drawBar_1();
+      }
+
+
+
+    </script>
+  </head>
+
+</html>
